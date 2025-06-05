@@ -43,7 +43,7 @@
     } */
 
     a.selected {
-        color: var(--button-hover-color);
+        background-color: var(--button-hover-color);
 		font-weight: bold;
 	}
 
