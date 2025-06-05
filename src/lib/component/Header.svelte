@@ -50,8 +50,7 @@
   font-size: clamp(8vw, 10vw, 12vw);
   margin: 0;
 }
-
-/****** ANIMACIE  ***********/
+/******** Animacie *********/
 .zoom-in {
   opacity: 0;
   transform: scale(0.3);
@@ -71,7 +70,7 @@
 
 .wave-line span {
   display: inline-block;
-  animation: wave-letter 1.5s ease-in-out 1;
+  animation: wave-letter 1.5s ease-in-out 2;
   animation-delay: calc(var(--i) * 0.1s);
 }
 
