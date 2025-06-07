@@ -1,0 +1,68 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* src/app.css */
+:root {
+  --primary-color: #8a0303a5;
+  --secondary-color:darkorange;
+  --background-color: #1a1a1a;
+  --text-color:#f1f1f1;
+  --button-color:#333 ;
+  --button-hover-color:#c91919 ;
+  
+  --font-size-sm:1.1rem;
+  --font-size-me:1.5rem;
+  --font-size-lg:2rem;
+  --word-spacing:0.2rem;
+  --letter-spacing:0.1rem;
+  --font-main:'Times New Roman', Times, serif;
+
+  --gap: 1.5rem;
+}
+
+/* triedy */
+h1{
+  color:var(--secondary-color);;
+}
+h2{
+  text-align: center;
+  font-size: var(--font-size-lg);
+  color:var(--secondary-color);
+  margin-bottom: 15px;
+}
+
+.btn {
+  all: unset;
+  background-color: var(--button-color);
+  color: var(--text-color);
+  font-size: var(--font-size-sm );
+  padding: 0.5rem 1rem;
+  gap: 5px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:active{
+  background-color: var(--button-hover-color);
+  font-weight: bold;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.spacer{
+  flex: 1;
+}
+
