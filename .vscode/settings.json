@@ -1,0 +1,22 @@
+{
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+        "source": "PowerShell",
+        "icon": "terminal-powershell"
+    },
+    "Git Bash": {
+        "path": "C:\\Program Files\\Git\\bin\\bash.exe",
+        "icon": "terminal-bash"
+    }
+    },
+    "terminal.integrated.defaultLocation": "view",
+    
+    "terminal.integrated.startupTasks": [
+        { "profile": "Git Bash", "name": "Bash" },
+        { "profile": "PowerShell", "name": "PowerShell 1" },
+        { "profile": "PowerShell", "name": "PowerShell 2" }
+    ]
+
+
+}
