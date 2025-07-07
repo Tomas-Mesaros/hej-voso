@@ -1,5 +1,7 @@
 node_modules
 Prykazy.txt
+start-server.bat
+
 # Output
 .output
 .vercel
@@ -21,3 +23,5 @@ Thumbs.db
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+/src/generated/prisma

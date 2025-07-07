@@ -1,0 +1,32 @@
+<svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="avatarBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#333;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#2d2d2d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#333;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="avatarAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff8c00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c91919;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="25" cy="25" r="23" fill="url(#avatarBg)" stroke="#ff8c00" stroke-width="2"/>
+  
+  <!-- Avatar silhouette -->
+  <g transform="translate(25, 25)">
+    <!-- Head -->
+    <circle cx="0" cy="-5" r="8" fill="url(#avatarAccent)" opacity="0.8"/>
+    
+    <!-- Body -->
+    <path d="M-12,8 Q-12,2 -8,0 Q0,-2 8,0 Q12,2 12,8 L12,18 L-12,18 Z" 
+          fill="url(#avatarAccent)" opacity="0.8"/>
+  </g>
+  
+  <!-- User icon -->
+  <g transform="translate(25, 35)" opacity="0.6">
+    <path d="M-3,-2 L3,-2 L3,0 L-3,0 Z" fill="#ff8c00"/>
+    <circle cx="0" cy="-5" r="2" fill="#ff8c00"/>
+  </g>
+</svg>

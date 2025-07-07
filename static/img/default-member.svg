@@ -1,0 +1,79 @@
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="memberBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#333;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#2d2d2d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#333;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="memberAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff8c00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c91919;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="avatarGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ff8c00;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#ff8c00;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="300" height="300" fill="url(#memberBg)" rx="15"/>
+  
+  <!-- Glow effect -->
+  <circle cx="150" cy="120" r="80" fill="url(#avatarGlow)"/>
+  
+  <!-- Avatar silhouette -->
+  <g transform="translate(150, 120)">
+    <!-- Head -->
+    <circle cx="0" cy="-20" r="35" fill="url(#memberAccent)" opacity="0.8"/>
+    
+    <!-- Body -->
+    <path d="M-45,20 Q-45,0 -25,-5 Q0,-10 25,-5 Q45,0 45,20 L45,60 L-45,60 Z" 
+          fill="url(#memberAccent)" opacity="0.8"/>
+    
+    <!-- Shoulders -->
+    <ellipse cx="0" cy="10" rx="50" ry="15" fill="url(#memberAccent)" opacity="0.6"/>
+  </g>
+  
+  <!-- Musical instruments around avatar -->
+  <g transform="translate(150, 150)" opacity="0.4">
+    <!-- Guitar -->
+    <g transform="translate(-60, -40) rotate(-15)">
+      <ellipse cx="0" cy="0" rx="8" ry="20" fill="#ff8c00"/>
+      <rect x="-1" y="-25" width="2" height="15" fill="#ff8c00"/>
+      <circle cx="0" cy="-30" r="4" fill="#ff8c00"/>
+    </g>
+    
+    <!-- Microphone -->
+    <g transform="translate(60, -40) rotate(15)">
+      <circle cx="0" cy="0" r="6" fill="#ff8c00"/>
+      <rect x="-1" y="6" width="2" height="20" fill="#ff8c00"/>
+      <rect x="-3" y="26" width="6" height="4" fill="#ff8c00"/>
+    </g>
+    
+    <!-- Drums -->
+    <g transform="translate(0, 40)">
+      <ellipse cx="-15" cy="0" rx="8" ry="6" fill="#ff8c00"/>
+      <ellipse cx="15" cy="0" rx="8" ry="6" fill="#ff8c00"/>
+      <ellipse cx="0" cy="-10" rx="6" ry="4" fill="#ff8c00"/>
+    </g>
+    
+    <!-- Piano keys -->
+    <g transform="translate(-40, 30)">
+      <rect x="0" y="0" width="3" height="12" fill="#ff8c00"/>
+      <rect x="4" y="0" width="3" height="12" fill="#ff8c00"/>
+      <rect x="8" y="0" width="3" height="12" fill="#ff8c00"/>
+      <rect x="12" y="0" width="3" height="12" fill="#ff8c00"/>
+    </g>
+  </g>
+  
+  <!-- Musical notes floating -->
+  <g opacity="0.3">
+    <text x="50" y="80" font-family="Arial" font-size="20" fill="#ff8c00">♪</text>
+    <text x="230" y="100" font-family="Arial" font-size="16" fill="#ff8c00">♫</text>
+    <text x="70" y="250" font-family="Arial" font-size="18" fill="#ff8c00">♪</text>
+    <text x="220" y="230" font-family="Arial" font-size="14" fill="#ff8c00">♬</text>
+  </g>
+  
+  <!-- Border -->
+  <rect width="300" height="300" fill="none" stroke="#ff8c00" stroke-width="3" rx="15"/>
+</svg>

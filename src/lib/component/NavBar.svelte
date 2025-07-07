@@ -5,54 +5,62 @@
 
 </script>
 
-<nav class="flex-row">
-    <div class="navBar">
+<nav class="navbar">
+    <div class="nav-links">
         <a class:selected={url === '/'} class="btn" href="/">Home</a>
-        <a class:selected={url === '/about'} class="btn" href="/about">O mne</a>
+        <a class:selected={url === '/about'} class="btn" href="/about">O kapele</a>
         <a class:selected={url === '/albums'} class="btn" href="/albums">Hudba</a>
         <a class:selected={url === '/concerts'} class="btn" href="/concerts">Vystúpenia</a>
-        <a class:selected={url === '/contact'} class="btn" href="/contact">Kontakt</a>
         <a class:selected={url === '/gallery'} class="btn" href="/gallery">Galéria</a>
-        <a class:selected={url === '/e-shop'} class="btn" href="/e-shop">Obchod</a>
     </div>
-    <!-- <div class="navBar-btn">
-        <i class="fas fa-bars "></i>
-        <i class="fa-solid fa-xmark "></i>
-    </div> -->
 </nav>
 <style>
-    nav{
-        background-color: var(--primary-color);
-        padding: 15px 20px;
-        gap: var(--gap);
-        margin-bottom: 20px;
+    .navbar {
+        display: flex;
+        align-items: center;
+        padding: var(--spacing-lg) 0;
+        width: 100%;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: row;
+        gap: var(--spacing-lg);
         align-items: center;
     }
 
-    .navBar{
-        display: flex;
-        flex-direction: row;
-        gap: var(--gap);
+    .navbar .btn {
+        background-color: transparent;
+        border: 2px solid transparent;
+        transition: all var(--transition-normal);
     }
 
-    /* .navBar-btn{
-        position: absolute;
-        right: 0;
-        top: 0;
-        padding: 15px;
-    } */
-
-    a.selected {
+    .navbar .btn:hover {
         background-color: var(--button-hover-color);
-		font-weight: bold;
-	}
+        border-color: var(--secondary-color);
+    }
 
-    @media (max-width:855px){
-        .navBar{
-            display:flex;
-            flex-wrap:wrap;
-            margin: 0 auto;
+    .navbar .btn.selected {
+        background-color: var(--button-hover-color);
+        border-color: var(--secondary-color);
+        font-weight: bold;
+    }
+
+    /* Responzívne úpravy */
+    @media (max-width: 768px) {
+        .navbar {
+            padding: var(--spacing-md) 0;
+        }
+
+        .nav-links {
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+            justify-content: center;
+        }
+
+        .navbar .btn {
+            font-size: var(--font-size-xs);
+            padding: var(--spacing-xs) var(--spacing-sm);
         }
     }
-
 </style>
