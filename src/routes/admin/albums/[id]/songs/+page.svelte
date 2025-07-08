@@ -62,8 +62,14 @@
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    ...song,
-                    is_published: !song.is_published
+                    title: song.title,
+                    filename: song.filename,
+                    duration: song.duration,
+                    track_number: song.trackNumber,
+                    lyrics: song.lyrics,
+                    youtube_url: song.youtubeUrl,
+                    spotify_url: song.spotifyUrl,
+                    is_published: !song.isPublished
                 })
             });
 
@@ -148,7 +154,7 @@
             {#each songs as song, index}
                 <div class="song-card">
                     <div class="song-number">
-                        {song.track_number || index + 1}
+                        {song.trackNumber || index + 1}
                     </div>
                     
                     <div class="song-info">
@@ -210,11 +216,11 @@
 
                     <div class="song-status">
                         <button 
-                            class="status-toggle {song.is_published ? 'published' : 'unpublished'}"
+                            class="status-toggle {song.isPublished ? 'published' : 'unpublished'}"
                             on:click={() => togglePublished(song)}
-                            title="{song.is_published ? 'Publikovaná' : 'Nepublikovaná'}"
+                            title="{song.isPublished ? 'Publikovaná' : 'Nepublikovaná'}"
                         >
-                            <i class="fas {song.is_published ? 'fa-eye' : 'fa-eye-slash'}"></i>
+                            <i class="fas {song.isPublished ? 'fa-eye' : 'fa-eye-slash'}"></i>
                         </button>
                     </div>
 

@@ -6,6 +6,9 @@ export async function load() {
         const albums = await db.albums.findMany({
             include: {
                 songs: {
+                    where: {
+                        isPublished: true
+                    },
                     orderBy: {
                         trackNumber: 'asc'
                     }

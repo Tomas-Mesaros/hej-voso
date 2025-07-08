@@ -58,10 +58,10 @@
             </button>
             
             <div class="member-header">
-                <h2>{member.stage_name || `${member.first_name} ${member.last_name}`}</h2>
-                <div class="status-badge" class:active={member.is_active} class:inactive={!member.is_active}>
-                    <i class="fas {member.is_active ? 'fa-check-circle' : 'fa-times-circle'}"></i>
-                    {member.is_active ? 'Aktívny člen' : 'Neaktívny člen'}
+                <h2>{member.stageName || `${member.firstName} ${member.lastName}`}</h2>
+                <div class="status-badge" class:active={member.isActive} class:inactive={!member.isActive}>
+                    <i class="fas {member.isActive ? 'fa-check-circle' : 'fa-times-circle'}"></i>
+                    {member.isActive ? 'Aktívny člen' : 'Neaktívny člen'}
                 </div>
             </div>
         </div>
@@ -70,7 +70,7 @@
             <div class="profile-content">
                 <div class="image-section">
                     {#if member.photo}
-                        <img src="/uploads/band-members/{member.photo}" alt="Profilová fotka {member.first_name} {member.last_name}">
+                        <img src="/uploads/band-members/{member.photo}" alt="Profilová fotka {member.firstName} {member.lastName}">
                     {:else}
                         <div class="no-photo">
                             <div class="avatar-placeholder-large">
@@ -110,12 +110,12 @@
                         <ul class="info-list">
                             <li>
                                 <span class="label">Meno:</span>
-                                <span class="value">{member.first_name} {member.last_name}</span>
+                                <span class="value">{member.firstName} {member.lastName}</span>
                             </li>
-                            {#if member.stage_name}
+                            {#if member.stageName}
                                 <li>
                                     <span class="label">Umelecké meno:</span>
-                                    <span class="value">{member.stage_name}</span>
+                                    <span class="value">{member.stageName}</span>
                                 </li>
                             {/if}
                             {#if member.role}
@@ -173,25 +173,25 @@
                         <div class="social-media">
                             <h3><i class="fas fa-share-alt"></i> Sociálne siete</h3>
                             <ul class="social-list">
-                                {#if member.facebook_url}
+                                {#if member.facebookUrl}
                                     <li>
-                                        <a href={member.facebook_url} target="_blank" rel="noopener noreferrer" class="social-link facebook">
+                                        <a href={member.facebookUrl} target="_blank" rel="noopener noreferrer" class="social-link facebook">
                                             <i class="fab fa-facebook"></i>
                                             Facebook
                                         </a>
                                     </li>
                                 {/if}
-                                {#if member.instagram_url}
+                                {#if member.instagramUrl}
                                     <li>
-                                        <a href={member.instagram_url} target="_blank" rel="noopener noreferrer" class="social-link instagram">
+                                        <a href={member.instagramUrl} target="_blank" rel="noopener noreferrer" class="social-link instagram">
                                             <i class="fab fa-instagram"></i>
                                             Instagram
                                         </a>
                                     </li>
                                 {/if}
-                                {#if member.youtube_url}
+                                {#if member.youtubeUrl}
                                     <li>
-                                        <a href={member.youtube_url} target="_blank" rel="noopener noreferrer" class="social-link youtube">
+                                        <a href={member.youtubeUrl} target="_blank" rel="noopener noreferrer" class="social-link youtube">
                                             <i class="fab fa-youtube"></i>
                                             YouTube
                                         </a>
