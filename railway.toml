@@ -8,3 +8,4 @@ restartPolicyType = "on_failure"
 
 [env]
 BODY_SIZE_LIMIT = "52428800"
+NODE_ENV = "production"
