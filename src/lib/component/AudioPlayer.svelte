@@ -342,7 +342,23 @@
     }
     
     .audio-player.mini .volume-controls {
-        display: none;
+        display: flex;
+        gap: 5px;
+    }
+    
+    .audio-player.mini .volume-slider {
+        width: 60px;
+    }
+    
+    .audio-player.mini .volume-display {
+        font-size: 0.8rem;
+        min-width: 30px;
+    }
+    
+    .audio-player.mini .mute-btn {
+        width: 25px;
+        height: 25px;
+        font-size: 12px;
     }
 
     .play-pause-btn {
