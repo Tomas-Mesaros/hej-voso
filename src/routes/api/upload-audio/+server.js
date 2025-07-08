@@ -33,9 +33,10 @@ export async function POST({ request }) {
       return json({ error: 'File too large. Maximum size is 50MB' }, { status: 400 });
     }
     
-    // Vytvor priečinok ak neexistuje
-    const uploadDir = join(process.cwd(), 'static', 'uploads', 'audio');
+    // Vytvor priečinok ak neexistuje - Railway kompatibilná cesta
+    const uploadDir = join(process.cwd(), 'uploads', 'audio');
     console.log('Upload directory:', uploadDir);
+    console.log('Current working directory:', process.cwd());
     
     if (!existsSync(uploadDir)) {
       console.log('Creating upload directory');
