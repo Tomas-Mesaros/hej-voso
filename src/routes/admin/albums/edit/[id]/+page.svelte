@@ -118,12 +118,18 @@
                 formData.cover_image = await uploadCoverImage();
             }
 
+            const submitFormData = new FormData();
+            submitFormData.append('title', formData.title);
+            submitFormData.append('description', formData.description || '');
+            submitFormData.append('genre', formData.genre || '');
+            submitFormData.append('release_date', formData.release_date || '');
+            submitFormData.append('cover_image', formData.cover_image || '');
+            submitFormData.append('is_published', formData.is_published.toString());
+            submitFormData.append('sort_order', formData.sort_order.toString());
+
             const response = await fetch(`/api/albums/${albumId}`, {
                 method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
+                body: submitFormData
             });
 
             if (response.ok) {

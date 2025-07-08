@@ -126,8 +126,8 @@
                     <div class="card-content">
                         <p>Prehľad návštevnosti a popularity obsahu</p>
                         <div class="card-actions">
-                            <a href="/admin/stats" class="action-btn primary">
-                                <i class="fas fa-analytics"></i>
+                            <a href="/admin/analytics" class="action-btn primary">
+                                <i class="fas fa-chart-bar"></i>
                                 Zobraziť štatistiky
                             </a>
                         </div>

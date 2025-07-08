@@ -4,6 +4,9 @@ import { error } from '@sveltejs/kit';
 export async function load() {
     try {
         const albums = await db.albums.findMany({
+            where: {
+                isPublished: true
+            },
             include: {
                 songs: {
                     where: {
