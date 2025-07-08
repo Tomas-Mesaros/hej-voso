@@ -75,6 +75,7 @@ model Song {
   updatedAt   DateTime @updatedAt @map("updated_at")
 
   album Album @relation(fields: [albumId], references: [id], onDelete: Cascade)
+  plays SongPlay[]
 
   @@map("songs")
 }
@@ -131,4 +132,29 @@ model Concert {
   updatedAt   DateTime @updatedAt @map("updated_at")
 
   @@map("concerts")
+}
+
+model PageView {
+  id        Int      @id @default(autoincrement())
+  page      String
+  userAgent String?  @map("user_agent")
+  ipAddress String?  @map("ip_address")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("page_views")
+}
+
+model SongPlay {
+  id           Int      @id @default(autoincrement())
+  songId       Int      @map("song_id")
+  duration     Int      // v sekundách
+  playedTime   Int      @map("played_time") // koľko sekúnd sa prehralo
+  completed70  Boolean  @default(false) @map("completed_70") // či sa prehralo aspoň 70%
+  userAgent    String?  @map("user_agent")
+  ipAddress    String?  @map("ip_address")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  song Song @relation(fields: [songId], references: [id], onDelete: Cascade)
+
+  @@map("song_plays")
 }
