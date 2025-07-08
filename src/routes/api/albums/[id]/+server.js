@@ -41,7 +41,46 @@ export async function PUT({ params, request }) {
 /** @type {import('./$types').RequestHandler} */
 export async function DELETE({ params }) {
   try {
+    // Najprv získaj album so skladbami
+    const album = await db.albums.findById(params.id);
+    if (!album) {
+      return json({ error: 'Album not found' }, { status: 404 });
+    }
+
+    // Vymaž audio súbory skladieb
+    if (album.songs && album.songs.length > 0) {
+      const { unlink } = await import('fs/promises');
+      const { join } = await import('path');
+      
+      for (const song of album.songs) {
+        if (song.filename) {
+          try {
+            const audioPath = join(process.cwd(), 'static', 'uploads', 'audio', song.filename);
+            await unlink(audioPath);
+            console.log('Deleted audio file:', song.filename);
+          } catch (fileError) {
+            console.warn('Could not delete audio file:', song.filename, fileError.message);
+          }
+        }
+      }
+    }
+
+    // Vymaž cover image ak existuje
+    if (album.coverImage) {
+      try {
+        const { unlink } = await import('fs/promises');
+        const { join } = await import('path');
+        const coverPath = join(process.cwd(), 'static', 'uploads', 'albums', album.coverImage);
+        await unlink(coverPath);
+        console.log('Deleted cover image:', album.coverImage);
+      } catch (fileError) {
+        console.warn('Could not delete cover image:', album.coverImage, fileError.message);
+      }
+    }
+
+    // Vymaž album z databázy (Prisma automaticky vymaže skladby vaka Cascade)
     await db.albums.delete(params.id);
+    
     return json({ success: true });
   } catch (error) {
     console.error('Error deleting album:', error);

@@ -9,6 +9,7 @@
 	import 'lightgallery/css/lg-zoom.css';
 
 	let galleryElements = {};
+	let galleryInstances = {};
 	let galleryData = [];
 	let totalImages = 0;
 	let isLoading = true;
@@ -99,8 +100,8 @@
 		// Počkaj na renderovanie komponentov
 		setTimeout(() => {
 			Object.keys(galleryElements).forEach(key => {
-				if (galleryElements[key]) {
-					lightGallery(galleryElements[key], {
+				if (galleryElements[key] && !galleryInstances[key]) {
+					galleryInstances[key] = lightGallery(galleryElements[key], {
 						plugins: [lgThumbnail, lgZoom],
 						speed: 500,
 						selector: '.gallery-item'
@@ -114,10 +115,7 @@
 		return `gallery-${year}-${type.replace(/\s+/g, '-').toLowerCase()}`;
 	}
 
-	// Reinicializuj lightGallery keď sa dáta zmenia
-	$: if (galleryData.length > 0) {
-		setTimeout(() => initializeLightGallery(), 100);
-	}
+
 </script>
 
 <svelte:head>

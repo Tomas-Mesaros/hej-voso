@@ -29,6 +29,27 @@ export async function POST({ request }) {
 export async function DELETE({ url }) {
   try {
     const photoId = url.pathname.split('/').pop();
+    
+    // Najprv získaj foto info
+    const photo = await db.galleryPhotos.findById(parseInt(photoId));
+    if (!photo) {
+      return json({ error: 'Photo not found' }, { status: 404 });
+    }
+
+    // Vymaž súbor z disku
+    if (photo.filename) {
+      try {
+        const { unlink } = await import('fs/promises');
+        const { join } = await import('path');
+        const photoPath = join(process.cwd(), 'static', 'uploads', 'gallery', photo.filename);
+        await unlink(photoPath);
+        console.log('Deleted photo file:', photo.filename);
+      } catch (fileError) {
+        console.warn('Could not delete photo file:', photo.filename, fileError.message);
+      }
+    }
+
+    // Vymaž z databázy
     await db.galleryPhotos.delete(parseInt(photoId));
     return json({ success: true });
   } catch (error) {

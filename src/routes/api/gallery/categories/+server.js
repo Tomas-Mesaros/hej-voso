@@ -44,6 +44,45 @@ export async function POST({ request }) {
 export async function DELETE({ params }) {
   try {
     const id = parseInt(params.id);
+    
+    // Najprv získaj kategóriu s fotkami
+    const category = await db.galleryCategories.findById(id);
+    if (!category) {
+      return json({ error: 'Category not found' }, { status: 404 });
+    }
+
+    // Vymaž všetky fotky z disku
+    if (category.photos && category.photos.length > 0) {
+      const { unlink } = await import('fs/promises');
+      const { join } = await import('path');
+      
+      for (const photo of category.photos) {
+        if (photo.filename) {
+          try {
+            const photoPath = join(process.cwd(), 'static', 'uploads', 'gallery', photo.filename);
+            await unlink(photoPath);
+            console.log('Deleted photo file:', photo.filename);
+          } catch (fileError) {
+            console.warn('Could not delete photo file:', photo.filename, fileError.message);
+          }
+        }
+      }
+    }
+
+    // Vymaž cover photo ak existuje
+    if (category.coverPhoto) {
+      try {
+        const { unlink } = await import('fs/promises');
+        const { join } = await import('path');
+        const coverPath = join(process.cwd(), 'static', 'uploads', 'gallery', category.coverPhoto);
+        await unlink(coverPath);
+        console.log('Deleted cover photo:', category.coverPhoto);
+      } catch (fileError) {
+        console.warn('Could not delete cover photo:', category.coverPhoto, fileError.message);
+      }
+    }
+
+    // Vymaž kategóriu z databázy (Prisma automaticky vymaže fotky vaka Cascade)
     await db.galleryCategories.delete(id);
     return json({ success: true });
   } catch (error) {
