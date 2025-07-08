@@ -58,6 +58,11 @@
         align-items: center;
         padding: var(--spacing-lg) 0;
         width: 100%;
+        background-color: var(--background-color);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        border-bottom: 1px solid var(--border-color);
     }
 
     .nav-links {
