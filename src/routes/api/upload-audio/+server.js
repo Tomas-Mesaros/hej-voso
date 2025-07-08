@@ -34,7 +34,7 @@ export async function POST({ request }) {
     }
     
     // Vytvor priečinok ak neexistuje - Railway kompatibilná cesta
-    const uploadDir = join(process.cwd(), 'uploads', 'audio');
+    const uploadDir = join(process.cwd(), 'static', 'uploads', 'audio');
     console.log('Upload directory:', uploadDir);
     console.log('Current working directory:', process.cwd());
     

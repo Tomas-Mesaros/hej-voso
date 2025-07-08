@@ -1,7 +1,39 @@
 <script>
     import { page } from "$app/stores"
+    import { browser } from '$app/environment'
+    import { onMount } from 'svelte'
 
     $: url = $page.url.pathname
+    let isLoggedIn = false
+
+    onMount(() => {
+        if (browser) {
+            checkLoginStatus()
+        }
+    })
+
+    function checkLoginStatus() {
+        const loginStatus = localStorage.getItem('isLoggedIn')
+        const loginTime = localStorage.getItem('loginTime')
+        
+        if (loginStatus === 'true' && loginTime) {
+            const now = new Date().getTime()
+            const loginTimestamp = parseInt(loginTime)
+            const hoursDiff = (now - loginTimestamp) / (1000 * 60 * 60)
+            
+            // Ak je prihlásený menej ako 24 hodín
+            if (hoursDiff < 24) {
+                isLoggedIn = true
+            } else {
+                // Vymaž staré prihlásenie
+                localStorage.removeItem('isLoggedIn')
+                localStorage.removeItem('loginTime')
+                localStorage.removeItem('userToken')
+                localStorage.removeItem('userName')
+                isLoggedIn = false
+            }
+        }
+    }
 
 </script>
 
@@ -12,6 +44,12 @@
         <a class:selected={url === '/albums'} class="btn" href="/albums">Hudba</a>
         <a class:selected={url === '/concerts'} class="btn" href="/concerts">Vystúpenia</a>
         <a class:selected={url === '/gallery'} class="btn" href="/gallery">Galéria</a>
+        {#if isLoggedIn}
+            <a class:selected={url.startsWith('/admin')} class="btn admin-btn" href="/admin">
+                <i class="fas fa-cog"></i>
+                Admin
+            </a>
+        {/if}
     </div>
 </nav>
 <style>
@@ -44,6 +82,21 @@
         background-color: var(--button-hover-color);
         border-color: var(--secondary-color);
         font-weight: bold;
+    }
+
+    .admin-btn {
+        background-color: rgba(220, 53, 69, 0.1) !important;
+        border-color: #dc3545 !important;
+        color: #dc3545 !important;
+    }
+
+    .admin-btn:hover {
+        background-color: #dc3545 !important;
+        color: white !important;
+    }
+
+    .admin-btn i {
+        margin-right: 5px;
     }
 
     /* Responzívne úpravy */

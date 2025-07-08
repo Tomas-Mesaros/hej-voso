@@ -130,6 +130,9 @@
             // Upload new audio file if selected
             if (audioFile) {
                 formData.filename = await uploadAudioFile();
+            } else {
+                // Keep original filename if no new file uploaded
+                formData.filename = originalFilename;
             }
 
             // Clean up empty strings to null

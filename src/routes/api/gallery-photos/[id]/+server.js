@@ -1,6 +1,26 @@
 import { json } from '@sveltejs/kit';
 import { db } from '$lib/database.js';
 
+export async function PUT({ params, request }) {
+  try {
+    const photoId = parseInt(params.id);
+    const data = await request.json();
+    
+    const photoData = {
+      title: data.title || null,
+      description: data.description || null,
+      altText: data.alt_text || null,
+      sortOrder: parseInt(data.sort_order) || 0
+    };
+
+    const photo = await db.galleryPhotos.update(photoId, photoData);
+    return json(photo);
+  } catch (error) {
+    console.error('Error updating gallery photo:', error);
+    return json({ error: 'Failed to update gallery photo' }, { status: 500 });
+  }
+}
+
 export async function DELETE({ params }) {
   try {
     const photoId = parseInt(params.id);

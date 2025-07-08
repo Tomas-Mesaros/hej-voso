@@ -40,8 +40,9 @@
             const data = await response.json();
 
             if (response.ok && data.success) {
-                // Uloženie do localStorage
+                // Uloženie do localStorage s časom prihlásenia
                 localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('loginTime', new Date().getTime().toString());
                 localStorage.setItem('userToken', data.token || 'authenticated');
                 localStorage.setItem('userName', data.user.name);
 

@@ -183,6 +183,10 @@
                             <i class="fas fa-plus"></i>
                             Pridať fotky
                         </button>
+                        <button class="btn-action info" on:click={() => goto(`/admin/gallery/manage-photos/${category.id}`)}>
+                            <i class="fas fa-cog"></i>
+                            Správa fotiek
+                        </button>
                         <button class="btn-action secondary" on:click={() => editCategory(category.id)}>
                             <i class="fas fa-edit"></i>
                             Upraviť
@@ -450,6 +454,15 @@
 
     .btn-action.danger:hover {
         background: #c0392b;
+    }
+
+    .btn-action.info {
+        background: #17a2b8;
+        color: white;
+    }
+
+    .btn-action.info:hover {
+        background: #138496;
     }
 
     .btn {
