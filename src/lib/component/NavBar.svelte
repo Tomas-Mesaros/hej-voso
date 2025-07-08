@@ -58,7 +58,8 @@
         align-items: center;
         padding: var(--spacing-lg) 0;
         width: 100%;
-        background-color: var(--background-color);
+        background-color: rgba(26, 26, 26, 0.9);
+        backdrop-filter: blur(10px);
         position: sticky;
         top: 0;
         z-index: 100;
